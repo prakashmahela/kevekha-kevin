@@ -33,6 +33,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Statesman', href: '#statesman' },
+    { name: 'Artist', href: '#artist' },
     { name: 'Author', href: '#author' },
   ];
 
@@ -40,12 +41,12 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-[#020617]/95 backdrop-blur-2xl py-3 md:py-4 border-b border-brand-gold/30 shadow-[0_10px_40px_rgba(0,0,0,0.5)]' 
-          : 'bg-[#020617]/40 backdrop-blur-lg py-4 md:py-8'
+          ? 'bg-zinc-950/90 backdrop-blur-xl py-3 md:py-4 border-b border-white/5 shadow-2xl' 
+          : 'bg-zinc-950/30 backdrop-blur-md py-4 md:py-8'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="font-display text-2xl md:text-3xl tracking-tighter uppercase text-white hover:text-brand-gold hover:scale-105 transition-all duration-300">
+        <a href="#home" className="font-display text-2xl md:text-3xl tracking-tighter uppercase text-white hover:animate-color-flow hover:scale-105 transition-all duration-300">
           K.K. ZEHOL
         </a>
 
@@ -55,10 +56,10 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70 hover:text-brand-gold transition-all duration-300 relative group"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 hover:text-white hover:animate-color-flow transition-all duration-300 relative group"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           <motion.a 
@@ -100,7 +101,7 @@ const Navbar = () => {
                 whileHover={{ rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMobileMenuOpen(false)} 
-                className="text-white p-2 rounded-[12px] hover:bg-brand-gold/10 transition-colors"
+                className="text-white p-2 rounded-[12px] hover:bg-white/10 transition-colors"
               >
                 <X size={32} />
               </motion.button>
@@ -111,15 +112,15 @@ const Navbar = () => {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-display text-5xl tracking-tighter uppercase text-white/60 hover:text-brand-gold transition-all"
+                  className="font-display text-5xl tracking-tighter uppercase text-white/60 hover:text-white hover:animate-color-flow transition-all"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
             <div className="mt-auto flex items-center space-x-6">
-              <a href="#" className="text-white/60 hover:text-brand-gold transition-colors"><Instagram size={24} /></a>
-              <a href="#" className="text-white/60 hover:text-brand-gold transition-colors"><Twitter size={24} /></a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors"><Instagram size={24} /></a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors"><Twitter size={24} /></a>
               <a href="https://youtube.com" className="text-red-600 hover:scale-110 transition-transform"><Youtube size={32} /></a>
             </div>
           </motion.div>
@@ -204,6 +205,14 @@ const Hero = () => {
               className="px-8 py-4 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-xl shadow-brand-blue/20"
             >
               The Statesman
+            </motion.a>
+            <motion.a 
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              href="#artist" 
+              className="px-8 py-4 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-xl shadow-brand-blue/20"
+            >
+              The Artist
             </motion.a>
           </div>
         </motion.div>
@@ -314,6 +323,127 @@ const Statesman = () => {
   );
 };
 
+const Artist = () => {
+  const discography = [
+    { title: "Mapo Evie", type: "Album", img: "https://picsum.photos/seed/mapo/600/600" },
+    { title: "In His Grace", type: "Album", img: "https://picsum.photos/seed/grace/600/600" },
+    { title: "Azou", type: "Single", img: "https://picsum.photos/seed/azou/600/600" },
+    { title: "Naga Soul", type: "Single", img: "https://picsum.photos/seed/soul/600/600" },
+  ];
+
+  const videos = [
+    "djDJNmHczPA",
+    "gkCKTuR-ECI",
+    "U2SVCCENLjE",
+    "U2SVCCENLjE"
+  ];
+
+  return (
+    <section id="artist" className="py-24 bg-brand-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center space-x-2 text-brand-blue mb-4">
+            <Music size={20} />
+            <span className="uppercase tracking-[0.3em] text-xs font-bold">Musical Journey</span>
+          </div>
+          <h2 className="font-display text-6xl md:text-8xl tracking-tighter uppercase">The Artist</h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+          {discography.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <div className="aspect-square overflow-hidden rounded-[12px] mb-6 relative shadow-lg">
+                <img 
+                  src={item.img} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-brand-blue/0 group-hover:bg-brand-blue/20 transition-colors duration-300 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
+                    <Play className="text-brand-blue fill-brand-blue ml-1" size={24} />
+                  </div>
+                </div>
+              </div>
+              <h3 className="font-display text-2xl uppercase tracking-tight mb-1">{item.title}</h3>
+              <p className="text-xs uppercase tracking-widest text-brand-gold font-bold">{item.type}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Featured Videos Section */}
+        <div className="mb-24">
+          <div className="flex items-center justify-between mb-12">
+            <h3 className="font-display text-4xl uppercase tracking-tighter">Featured Performances</h3>
+            <div className="h-[1px] flex-grow bg-zinc-200 mx-8 hidden md:block" />
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-red-600 flex items-center hover:translate-x-1 transition-transform">
+              View All <ChevronRight size={16} />
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {videos.map((id, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="aspect-video bg-zinc-100 rounded-[12px] overflow-hidden shadow-xl border border-zinc-200 group relative"
+              >
+                <iframe 
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${id}`}
+                  title={`YouTube video player ${idx}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div className="p-12 bg-white rounded-[12px] shadow-2xl flex flex-col lg:flex-row items-center gap-12 border border-zinc-100">
+          <div className="lg:w-1/2">
+            <h3 className="font-display text-4xl uppercase mb-6 leading-none">A Voice for the <br /><span>Naga Spirit</span></h3>
+            <p className="text-zinc-600 mb-8 leading-relaxed">
+              Kevin's music blends traditional Naga sensibilities with contemporary sounds, creating a unique sonic landscape that resonates across generations. His albums "Mapo Evie" and "In His Grace" have become staples in the local music scene.
+            </p>
+            <motion.button 
+              whileHover={{ scale: 1.05, x: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-3 px-6 py-3 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-lg group"
+            >
+              <span>Listen on YouTube</span>
+              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </div>
+          <div className="lg:w-1/2 w-full aspect-video bg-zinc-100 rounded-[12px] overflow-hidden relative group">
+            <img 
+              src="https://picsum.photos/seed/studio/800/450" 
+              alt="Studio Session" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+               <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                <Youtube className="text-white" size={32} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Author = () => {
   return (
     <section id="author" className="py-24 bg-white overflow-hidden">
@@ -401,6 +531,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#statesman" className="hover:text-white transition-colors">The Statesman</a></li>
+              <li><a href="#artist" className="hover:text-white transition-colors">The Artist</a></li>
               <li><a href="#author" className="hover:text-white transition-colors">The Author</a></li>
             </ul>
           </div>
@@ -436,6 +567,7 @@ export default function App() {
       <main>
         <Hero />
         <Statesman />
+        <Artist />
         <Author />
       </main>
       <Footer />
