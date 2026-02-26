@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --color-brand-blue: #27272A;
+  --color-brand-gold: #D4AF37;
+  --color-brand-white: #FAFAFA;
+  --color-brand-navy: #09090B;
+  --color-brand-sky: #00D2FF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-brand-navy text-white font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6, .animate-color-flow {
+    @apply font-display uppercase tracking-tight;
+    background: linear-gradient(90deg, #00D2FF, #7DD3FC, #00AEEF, #00D2FF);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 5s linear infinite;
+  }
+  .btn-animate-flow {
+    background: linear-gradient(90deg, #00D2FF, #7DD3FC, #00AEEF, #00D2FF);
+    background-size: 200% auto;
+    animation: colorFlow 5s linear infinite;
+    @apply text-white border-none;
+  }
+}
+
+@keyframes colorFlow {
+  to {
+    background-position: 200% center;
+  }
+}
+
