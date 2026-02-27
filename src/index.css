@@ -32,6 +32,63 @@
     animation: colorFlow 5s linear infinite;
     @apply text-white border-none;
   }
+  .header-flow {
+    background: linear-gradient(90deg, #09090B, #1A1A1E, #09090B);
+    background-size: 200% auto;
+    animation: colorFlow 10s linear infinite;
+  }
+  .animate-yellow-flow {
+    @apply font-display uppercase tracking-tight;
+    background: linear-gradient(90deg, #FFD60A, #FACC15, #EAB308, #FFD60A);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 5s linear infinite;
+  }
+  .animate-white-flow {
+    @apply font-display uppercase tracking-tight;
+    background: linear-gradient(90deg, #FFFFFF, #E2E8F0, #FFFFFF, #CBD5E1, #FFFFFF);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 4s linear infinite;
+  }
+  .premium-card-ruby {
+    background: linear-gradient(135deg, #450a0a 0%, #991b1b 50%, #450a0a 100%);
+    background-size: 200% 200%;
+  }
+  .premium-card-gold {
+    background: linear-gradient(135deg, #451a03 0%, #b45309 50%, #451a03 100%);
+    background-size: 200% 200%;
+  }
+  .premium-card-emerald {
+    background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #064e3b 100%);
+    background-size: 200% 200%;
+  }
+  .shimmer-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-sweep::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 55%
+    );
+    animation: shimmer 6s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translate(-30%, -30%) rotate(0deg); }
+  100% { transform: translate(30%, 30%) rotate(0deg); }
 }
 
 @keyframes colorFlow {

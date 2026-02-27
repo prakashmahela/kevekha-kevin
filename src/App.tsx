@@ -38,52 +38,54 @@ const Navbar = () => {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-zinc-950/90 backdrop-blur-xl py-3 md:py-4 border-b border-white/5 shadow-2xl' 
-          : 'bg-zinc-950/30 backdrop-blur-md py-4 md:py-8'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="font-display text-2xl md:text-3xl tracking-tighter uppercase text-white hover:animate-color-flow hover:scale-105 transition-all duration-300">
-          K.K. ZEHOL
-        </a>
+    <>
+      <nav 
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 header-flow ${
+          isScrolled 
+            ? 'bg-brand-navy/95 backdrop-blur-xl py-3 md:py-4 border-b border-white/10 shadow-2xl' 
+            : 'bg-brand-navy/60 backdrop-blur-md py-4 md:py-8'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <a href="#home" className="font-display text-2xl md:text-3xl tracking-tighter uppercase text-white hover:animate-color-flow hover:scale-105 transition-all duration-300">
+            K.K. ZEHOL
+          </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-10">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 hover:text-white hover:animate-color-flow transition-all duration-300 relative group"
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-10">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 hover:text-white hover:animate-color-flow transition-all duration-300 relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+            <motion.a 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              href="https://youtube.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-red-600 text-white p-2.5 rounded-[12px] shadow-lg shadow-red-600/20"
             >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-          <motion.a 
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            href="https://youtube.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-red-600 text-white p-2.5 rounded-[12px] shadow-lg shadow-red-600/20"
-          >
-            <Youtube size={18} />
-          </motion.a>
-        </div>
+              <Youtube size={18} />
+            </motion.a>
+          </div>
 
-        {/* Mobile Toggle */}
-        <motion.button 
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="md:hidden text-white p-2 rounded-[12px] hover:bg-white/10 transition-colors"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          <Menu size={28} />
-        </motion.button>
-      </div>
+          {/* Mobile Toggle */}
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="md:hidden text-white p-2 rounded-[12px] hover:bg-white/10 transition-colors"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu size={28} />
+          </motion.button>
+        </div>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -93,7 +95,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-zinc-950 z-[60] flex flex-col p-8"
+            className="fixed inset-0 bg-brand-navy z-[60] flex flex-col p-8"
           >
             <div className="flex justify-between items-center mb-12">
               <span className="font-display text-2xl tracking-tighter uppercase text-white">K.K. ZEHOL</span>
@@ -121,12 +123,12 @@ const Navbar = () => {
             <div className="mt-auto flex items-center space-x-6">
               <a href="#" className="text-white/60 hover:text-white transition-colors"><Instagram size={24} /></a>
               <a href="#" className="text-white/60 hover:text-white transition-colors"><Twitter size={24} /></a>
-              <a href="https://youtube.com" className="text-red-600 hover:scale-110 transition-transform"><Youtube size={32} /></a>
+              <a href="https://www.youtube.com/@kevekhakevinzehol9688" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-110 transition-transform"><Youtube size={32} /></a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
@@ -146,7 +148,7 @@ const Hero = () => {
           <div className="inline-block px-4 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold tracking-widest uppercase rounded-full mb-10">
             Statesman • Artist • Author
           </div>
-          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl tracking-tight uppercase leading-[1.1] mb-12">
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl tracking-tight uppercase leading-[1.05] mb-12">
             Kevekha Kevin Zehol
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -228,7 +230,7 @@ const Statesman = () => {
       title: "Chairman, NSSB",
       desc: "Leading the Nagaland Staff Selection Board with a focus on transparency and meritocracy.",
       icon: <Award className="text-white" />,
-      color: "bg-[#FF2D55]", // Premium Vibrant Red
+      color: "premium-card-ruby",
       textColor: "text-white"
     },
     {
@@ -236,7 +238,7 @@ const Statesman = () => {
       title: "Civil Service Career",
       desc: "Distinguished service in the Nagaland Civil Service across various administrative roles.",
       icon: <Award className="text-white" />,
-      color: "bg-[#FFD60A]", // Premium Vibrant Gold
+      color: "premium-card-gold",
       textColor: "text-white"
     },
     {
@@ -244,7 +246,7 @@ const Statesman = () => {
       title: "Administrative Excellence",
       desc: "Pioneering initiatives in governance and community development throughout the state.",
       icon: <Award className="text-white" />,
-      color: "bg-[#32D74B]", // Premium Vibrant Green
+      color: "premium-card-emerald",
       textColor: "text-white"
     }
   ];
@@ -254,7 +256,7 @@ const Statesman = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <h2 className="font-display text-5xl md:text-7xl tracking-normal uppercase mb-4">Public Service Legacy</h2>
+            <h2 className="font-display text-5xl md:text-7xl tracking-normal uppercase mb-6">Public Service Legacy</h2>
             <div className="h-2 w-24 bg-brand-gold" />
           </div>
           <p className="text-zinc-500 max-w-md uppercase tracking-[0.2em] text-xs font-bold">
@@ -262,59 +264,69 @@ const Statesman = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {careerHighlights.map((item, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ y: -12, scale: 1.03 }}
-              className={`p-6 md:p-10 ${item.color} ${item.textColor} shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[12px] flex flex-col h-full transition-all duration-500 border border-white/10`}
+              initial={{ y: 0 }}
+              animate={{ 
+                y: [0, -10, 0],
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut",
+                delay: idx * 0.5
+              }}
+              whileHover={{ y: -15, scale: 1.05, rotate: 1 }}
+              className={`p-6 md:p-10 ${item.color} ${item.textColor} shimmer-sweep shadow-[0_30px_60px_rgba(0,0,0,0.2)] rounded-[16px] flex flex-col h-full transition-all duration-500 border border-white/20`}
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-6 md:mb-10 shadow-inner">
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-white/10 backdrop-blur-xl flex items-center justify-center mb-6 md:mb-10 shadow-xl border border-white/20">
                 {item.icon}
               </div>
-              <span className="font-display text-3xl md:text-4xl mb-3 opacity-95 tracking-tight">{item.year}</span>
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-5 uppercase tracking-wide leading-tight">{item.title}</h3>
-              <p className="opacity-90 leading-relaxed font-medium text-base md:text-lg">{item.desc}</p>
+              <span className="font-display text-2xl md:text-4xl mb-2 md:mb-3 opacity-95 tracking-tight animate-yellow-flow">{item.year}</span>
+              <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-5 uppercase tracking-wide leading-tight drop-shadow-md animate-white-flow">{item.title}</h3>
+              <p className="opacity-80 leading-relaxed font-medium text-sm md:text-lg">{item.desc}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Bento Style Grid for more details */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="md:col-span-2 h-48 md:h-64 bg-zinc-50 border border-zinc-100 rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-zinc-900 overflow-hidden relative group">
+          <div className="md:col-span-2 h-48 md:h-64 bg-zinc-950 border border-zinc-800 rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-white overflow-hidden relative group">
             <img 
-              src="https://picsum.photos/seed/nssb/800/400" 
-              className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-700" 
-              alt="NSSB"
+              src="https://i.ibb.co/mC6FZzyT/Independence-Day-India-Proud-To-Be-Indian-Tiranga-Love-India-At77-Vande-Mataram.jpg" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              alt="Governance"
               referrerPolicy="no-referrer"
             />
             <div className="relative z-10">
-              <h4 className="font-display text-3xl uppercase tracking-normal text-zinc-900">Governance</h4>
-              <p className="text-sm opacity-60 uppercase tracking-widest">Nagaland Staff Selection Board</p>
+              <h4 className="font-display text-3xl uppercase tracking-normal animate-yellow-flow drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Governance</h4>
+              <p className="text-sm opacity-100 uppercase tracking-widest text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Nagaland Staff Selection Board</p>
             </div>
           </div>
-          <div className="h-48 md:h-64 bg-brand-gold rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-white relative overflow-hidden group">
+          <div className="h-48 md:h-64 bg-zinc-950 rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-white relative overflow-hidden group">
              <img 
-              src="https://picsum.photos/seed/service/400/400" 
-              className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" 
+              src="https://i.ibb.co/S77fDhPh/Finding-India-s-lost-musicians-1.jpg" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               alt="Service"
               referrerPolicy="no-referrer"
             />
             <div className="relative z-10">
-              <h4 className="font-display text-3xl uppercase tracking-normal text-white">34+</h4>
-              <p className="text-sm opacity-80 uppercase tracking-widest">Years of Service</p>
+              <h4 className="font-display text-3xl uppercase tracking-normal animate-yellow-flow drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">34+</h4>
+              <p className="text-sm opacity-100 uppercase tracking-widest text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Years of Service</p>
             </div>
           </div>
-          <div className="h-48 md:h-64 bg-zinc-100 border border-zinc-200 rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-zinc-900 relative overflow-hidden group">
+          <div className="h-48 md:h-64 bg-zinc-950 border border-zinc-800 rounded-[12px] p-6 md:p-8 flex flex-col justify-end text-white relative overflow-hidden group">
             <img 
-              src="https://picsum.photos/seed/impact/400/400" 
-              className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-700" 
+              src="https://i.ibb.co/DPpmtykR/download-2026-02-27-T101731-645.jpg" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               alt="Impact"
               referrerPolicy="no-referrer"
             />
             <div className="relative z-10">
-              <h4 className="font-display text-3xl uppercase tracking-normal text-zinc-900">Impact</h4>
-              <p className="text-sm opacity-60 uppercase tracking-widest">State-wide Legacy</p>
+              <h4 className="font-display text-3xl uppercase tracking-normal animate-yellow-flow drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Impact</h4>
+              <p className="text-sm opacity-100 uppercase tracking-widest text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">State-wide Legacy</p>
             </div>
           </div>
         </div>
@@ -324,18 +336,11 @@ const Statesman = () => {
 };
 
 const Artist = () => {
-  const discography = [
-    { title: "Mapo Evie", type: "Album", img: "https://picsum.photos/seed/mapo/600/600" },
-    { title: "In His Grace", type: "Album", img: "https://picsum.photos/seed/grace/600/600" },
-    { title: "Azou", type: "Single", img: "https://picsum.photos/seed/azou/600/600" },
-    { title: "Naga Soul", type: "Single", img: "https://picsum.photos/seed/soul/600/600" },
-  ];
-
   const videos = [
-    "djDJNmHczPA",
-    "gkCKTuR-ECI",
-    "U2SVCCENLjE",
-    "U2SVCCENLjE"
+    "Co2dRpBgKzo",
+    "6Ysghdn7kHU",
+    "5jYEaV_MSQQ",
+    "oBoUbrD7O-A"
   ];
 
   return (
@@ -346,36 +351,7 @@ const Artist = () => {
             <Music size={20} />
             <span className="uppercase tracking-[0.3em] text-xs font-bold">Musical Journey</span>
           </div>
-          <h2 className="font-display text-6xl md:text-8xl tracking-tighter uppercase">The Artist</h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-          {discography.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group cursor-pointer"
-            >
-              <div className="aspect-square overflow-hidden rounded-[12px] mb-6 relative shadow-lg">
-                <img 
-                  src={item.img} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-brand-blue/0 group-hover:bg-brand-blue/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
-                    <Play className="text-brand-blue fill-brand-blue ml-1" size={24} />
-                  </div>
-                </div>
-              </div>
-              <h3 className="font-display text-2xl uppercase tracking-tight mb-1">{item.title}</h3>
-              <p className="text-xs uppercase tracking-widest text-brand-gold font-bold">{item.type}</p>
-            </motion.div>
-          ))}
+          <h2 className="font-display text-6xl md:text-8xl tracking-tighter uppercase mb-4">The Artist</h2>
         </div>
 
         {/* Featured Videos Section */}
@@ -383,7 +359,7 @@ const Artist = () => {
           <div className="flex items-center justify-between mb-12">
             <h3 className="font-display text-4xl uppercase tracking-tighter">Featured Performances</h3>
             <div className="h-[1px] flex-grow bg-zinc-200 mx-8 hidden md:block" />
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-red-600 flex items-center hover:translate-x-1 transition-transform">
+            <a href="https://www.youtube.com/@kevekhakevinzehol9688" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-red-600 flex items-center hover:translate-x-1 transition-transform">
               View All <ChevronRight size={16} />
             </a>
           </div>
@@ -416,14 +392,17 @@ const Artist = () => {
             <p className="text-zinc-600 mb-8 leading-relaxed">
               Kevin's music blends traditional Naga sensibilities with contemporary sounds, creating a unique sonic landscape that resonates across generations. His albums "Mapo Evie" and "In His Grace" have become staples in the local music scene.
             </p>
-            <motion.button 
-              whileHover={{ scale: 1.05, x: 5 }}
+            <motion.a 
+              href="https://www.youtube.com/@kevekhakevinzehol9688"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-3 px-6 py-3 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-lg group"
+              className="flex items-center justify-center space-x-2 px-5 py-2.5 btn-animate-flow font-bold uppercase tracking-widest text-[10px] rounded-[10px] shadow-lg group w-fit mx-auto lg:mx-0"
             >
               <span>Listen on YouTube</span>
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+              <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
           </div>
           <div className="lg:w-1/2 w-full aspect-video bg-zinc-100 rounded-[12px] overflow-hidden relative group">
             <img 
@@ -447,54 +426,51 @@ const Artist = () => {
 const Author = () => {
   return (
     <section id="author" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="relative">
-              <div className="aspect-[3/4] w-full max-w-sm mx-auto bg-brand-white shadow-2xl rounded-[12px] overflow-hidden border-8 border-white relative z-10">
-                <img 
-                  src="https://picsum.photos/seed/book/600/800" 
-                  alt="Women in Naga Society" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-gold/10 rounded-full -z-10 blur-3xl" />
-              <div className="absolute -top-10 -left-10 w-48 h-48 bg-brand-blue/5 rounded-full -z-10 blur-2xl" />
-            </div>
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center space-x-2 text-brand-gold mb-8">
+          <BookOpen size={20} />
+          <span className="uppercase tracking-[0.3em] text-xs font-bold">Literary Works</span>
+        </div>
+        <h2 className="font-display text-6xl md:text-8xl tracking-tighter uppercase mb-12 leading-[1.0]">The <br />Author</h2>
+        
+        <div className="relative mb-16">
+          <div className="aspect-[3/4] w-full max-w-sm mx-auto bg-brand-white shadow-2xl rounded-[12px] overflow-hidden border-8 border-white relative z-10">
+            <img 
+              src="https://i.ibb.co/rG8Kxwq6/71-XPqw-TRzs-L-AC-UF1000-1000-QL80.jpg" 
+              alt="Your Time Will Come" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
-          
-          <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center space-x-2 text-brand-gold mb-6">
-              <BookOpen size={20} />
-              <span className="uppercase tracking-[0.3em] text-xs font-bold">Literary Works</span>
-            </div>
-            <h2 className="font-display text-6xl md:text-8xl tracking-tighter uppercase mb-8 leading-[0.85]">The <br />Author</h2>
-            <h3 className="text-2xl font-bold mb-6">"Women in Naga Society"</h3>
-            <p className="text-zinc-600 text-lg leading-relaxed mb-10">
-              An insightful exploration into the roles, challenges, and contributions of women within the rich cultural tapestry of Naga society. A seminal work that bridges history and contemporary sociology.
-            </p>
-            <div className="flex items-center space-x-8">
-              <div className="flex flex-col">
-                <span className="text-3xl font-display animate-color-flow">200+</span>
-                <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">Pages</span>
-              </div>
-              <div className="h-10 w-[1px] bg-zinc-200" />
-              <div className="flex flex-col">
-                <span className="text-3xl font-display animate-color-flow">1st</span>
-                <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">Edition</span>
-              </div>
-            </div>
-            <motion.button 
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="mt-12 px-10 py-4 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-xl flex items-center space-x-3"
-            >
-              <span>View Publication</span>
-              <ExternalLink size={16} />
-            </motion.button>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-gold/10 rounded-full -z-10 blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-48 h-48 bg-brand-blue/5 rounded-full -z-10 blur-2xl" />
+        </div>
+
+        <h3 className="text-3xl font-bold mb-6">"Your Time Will Come"</h3>
+        <p className="text-zinc-600 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
+          A compelling narrative that explores resilience, destiny, and the power of patience. A work that inspires readers to embrace their journey and trust in the timing of their lives.
+        </p>
+        
+        <div className="flex items-center justify-center space-x-12 mb-12">
+          <div className="flex flex-col">
+            <span className="text-4xl font-display animate-color-flow">200+</span>
+            <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">Pages</span>
+          </div>
+          <div className="h-12 w-[1px] bg-zinc-200" />
+          <div className="flex flex-col">
+            <span className="text-4xl font-display animate-color-flow">1st</span>
+            <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">Edition</span>
           </div>
         </div>
+
+        <motion.button 
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="px-12 py-5 btn-animate-flow font-bold uppercase tracking-widest text-sm rounded-[12px] shadow-xl flex items-center space-x-3 mx-auto"
+        >
+          <span>View Publication</span>
+          <ExternalLink size={16} />
+        </motion.button>
       </div>
     </section>
   );
@@ -520,7 +496,7 @@ const Footer = () => {
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.9 }} href="#" className="w-10 h-10 rounded-[12px] border border-zinc-700 flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue transition-all">
                 <Linkedin size={18} />
               </motion.a>
-              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.9 }} href="#" className="w-10 h-10 rounded-[12px] border border-zinc-700 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all">
+              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.9 }} href="https://www.youtube.com/@kevekhakevinzehol9688" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-[12px] border border-zinc-700 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all">
                 <Youtube size={18} />
               </motion.a>
             </div>
