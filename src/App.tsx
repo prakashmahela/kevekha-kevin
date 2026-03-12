@@ -1163,7 +1163,11 @@ const SubPage = ({ page, onClose }: { page: string; onClose: () => void }) => {
 /* ===== APP ===== */
 export default function App() {
   const [activeSubPage, setActiveSubPage] = useState<string | null>(null);
-  const [light, setLight] = useState(false);
+  const [light, setLight] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.add('light-mode');
+  }, []);
 
   const toggle = () => {
     setLight(prev => {
